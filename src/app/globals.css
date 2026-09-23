@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------- 基础层 ---------------------------------- */
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  * {
+    @apply border-line;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background text-metal antialiased;
+    text-rendering: optimizeLegibility;
+    /* 防止入场动画位移造成的横向溢出（clip 不会破坏 sticky） */
+    overflow-x: clip;
+  }
+
+  ::selection {
+    @apply bg-accent/80 text-white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a2a2a;
+    border-radius: 8px;
+    border: 2px solid #0a0a0a;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3a3a3a;
+  }
+
+  /* 键盘可达性：统一的聚焦环 */
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent/70 ring-offset-2 ring-offset-background;
+  }
+}
+
+/* --------------------------------- 组件层 ---------------------------------- */
+@layer components {
+  /* 页面主容器 */
+  .container-main {
+    @apply mx-auto w-full max-w-[1400px] px-4 sm:px-6 md:px-10 lg:px-12;
+  }
+
+  /* 区块标题组：EN 小标 + 中文大标题 */
+  .section-kicker {
+    @apply font-mono text-xs tracking-widest2 text-accent uppercase;
+  }
+  .section-title {
+    @apply mt-3 text-display-lg font-semibold text-metal-bright;
+  }
+
+  /* 金属质感分隔线：左端橙色渐隐 */
+  .hairline {
+    @apply h-px w-full bg-line;
+  }
+  .hairline-accent::before {
+    content: '';
+    @apply mr-4 inline-block h-px w-16 bg-accent align-middle;
+  }
+
+  /* 工业网格背景（Hero / 区块装饰用） */
+  .grid-bg {
+    background-image: theme('backgroundImage.grid-technical');
+    background-size: 24px 24px, 24px 24px, 96px 96px, 96px 96px;
+  }
+
+  /* 产品图展示板：白底产品图需要浅色展台才不突兀 */
+  .product-stage {
+    @apply relative overflow-hidden bg-gradient-to-b from-[#F4F4F2] to-[#DEDEDA];
+  }
+  /* 展示板四角刻度线装饰 */
+  .product-stage::after {
+    content: '';
+    @apply pointer-events-none absolute inset-3;
+    background:
+      linear-gradient(#1a1a1a, #1a1a1a) top left / 12px 1px no-repeat,
+      linear-gradient(#1a1a1a, #1a1a1a) top left / 1px 12px no-repeat,
+      linear-gradient(#1a1a1a, #1a1a1a) top right / 12px 1px no-repeat,
+      linear-gradient(#1a1a1a, #1a1a1a) top right / 1px 12px no-repeat,
+      linear-gradient(#1a1a1a, #1a1a1a) bottom left / 12px 1px no-repeat,
+      linear-gradient(#1a1a1a, #1a1a1a) bottom left / 1px 12px no-repeat,
+      linear-gradient(#1a1a1a, #1a1a1a) bottom right / 12px 1px no-repeat,
+      linear-gradient(#1a1a1a, #1a1a1a) bottom right / 1px 12px no-repeat;
+    opacity: 0.35;
+  }
+
+  /* 卡片 hover 金属光泽扫过效果 */
+  .shine-sweep {
+    @apply pointer-events-none absolute inset-0 overflow-hidden;
+  }
+  .shine-sweep::before {
+    content: '';
+    @apply absolute inset-y-0 w-1/2 -translate-x-[150%] skew-x-[-20deg] transition-transform duration-700 ease-out;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(192, 192, 192, 0.12) 45%,
+      rgba(237, 239, 242, 0.22) 50%,
+      rgba(192, 192, 192, 0.12) 55%,
+      transparent
+    );
+  }
+  .group:hover .shine-sweep::before {
+    @apply translate-x-[300%];
+  }
+
+  /* 等宽字体的技术参数行 */
+  .spec-row {
+    @apply flex items-baseline justify-between gap-6 border-b border-line py-3 font-mono text-sm;
+  }
+  .spec-row dt {
+    @apply shrink-0 text-metal-dim;
+  }
+  .spec-row dd {
+    @apply text-right text-metal-bright;
+  }
+}
+
+/* --------------------------------- 动画层 ---------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .shine-sweep::before {
+    transition: none;
+  }
+  .animate-marquee {
+    animation: none;
+  }
+}

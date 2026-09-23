@@ -1,0 +1,38 @@
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+/out/
+next-env.d.ts
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# AI tool local data
+/.pai
+
+# swc cache
+/.swc
+
+# vercel
+/.vercel
+
+# 原始素材（已在 public/products 有副本，且资源目录含 85MB 画册不适合进仓库）
+/江门嘉腾五金产品图片整理
+/资源
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# env files
+.env*.local
+
+# typescript
+*.tsbuildinfo
