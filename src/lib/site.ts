@@ -1,6 +1,6 @@
 /** 站点核心配置：真实联系方式与公司信息（文案部分在 i18n.ts 字典中） */
 export const site = {
-  url: 'https://www.jiateng-fastener.com',
+  url: 'https://jiateng.asia',
   foundedYear: 2009,
   /** 真实联系方式（来源：资源/基本信息.txt） */
   phone: '13822348696',
