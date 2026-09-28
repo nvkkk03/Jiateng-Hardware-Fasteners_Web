@@ -80,9 +80,9 @@
     background-size: 24px 24px, 24px 24px, 96px 96px, 96px 96px;
   }
 
-  /* 产品图展示板：白底产品图需要浅色展台才不突兀 */
+  /* 产品图展示板：产品原图为纯白背景，托盘同为纯白实现无缝融合 */
   .product-stage {
-    @apply relative overflow-hidden bg-gradient-to-b from-[#F4F4F2] to-[#DEDEDA];
+    @apply relative overflow-hidden bg-white;
   }
   /* 展示板四角刻度线装饰 */
   .product-stage::after {
