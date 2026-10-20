@@ -13,7 +13,7 @@ export function StandardsMarquee() {
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-background to-transparent" />
       <div className="flex w-max animate-marquee items-center gap-10">
         {list.map((s, i) => (
-          <span key={i} className="flex items-center gap-10 font-mono text-xs tracking-widest text-metal-dim/70">
+          <span key={i} className="flex items-center gap-10 font-mono text-xs tracking-widest text-metal-dim">
             {s}
             <span className="h-1 w-1 rounded-full bg-accent/60" />
           </span>

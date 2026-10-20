@@ -54,9 +54,7 @@ export function Hero({ heroImage, locale, dict }: HeroProps) {
           >
             {t.titleA}
             <span className="text-accent"> · </span>
-            <span className="text-transparent" style={{ WebkitTextStroke: '1px #C0C0C0' }}>
-              {t.titleB}
-            </span>
+            <span className="text-metal">{t.titleB}</span>
           </motion.h1>
 
           <motion.p variants={item(reduce)} className="mt-6 max-w-xl text-base leading-relaxed text-metal-dim md:text-lg">
@@ -83,7 +81,7 @@ export function Hero({ heroImage, locale, dict }: HeroProps) {
             {t.chips.map((chip) => (
               <li
                 key={chip}
-                className="rounded-sm border border-line bg-white/[0.03] px-3 py-1.5 font-mono text-[11px] tracking-wide text-metal-dim"
+                className="rounded-sm border border-line bg-metal/[0.03] px-3 py-1.5 font-mono text-[11px] tracking-wide text-metal-dim"
               >
                 {chip}
               </li>
@@ -98,10 +96,10 @@ export function Hero({ heroImage, locale, dict }: HeroProps) {
           transition={{ duration: 0.9, delay: 0.25, ease: [0.21, 0.47, 0.32, 0.98] }}
           className="relative mx-auto w-full max-w-[520px]"
         >
-          {/* 旋转刻度环 */}
-          <div className="absolute -inset-6 animate-spin-slow md:-inset-10" aria-hidden="true">
+          {/* 旋转刻度环（仅桌面端，移动端简化） */}
+          <div className="absolute -inset-10 hidden animate-spin-slow md:block" aria-hidden="true">
             <svg viewBox="0 0 100 100" className="h-full w-full">
-              <circle cx="50" cy="50" r="48.5" fill="none" stroke="rgba(192,192,192,0.14)" strokeWidth="0.3" strokeDasharray="1.5 2.5" />
+              <circle cx="50" cy="50" r="48.5" fill="none" style={{ stroke: 'rgb(var(--grid) / 0.14)' }} strokeWidth="0.3" strokeDasharray="1.5 2.5" />
               {Array.from({ length: 60 }).map((_, i) => {
                 const angle = (i * 6 * Math.PI) / 180
                 const long = i % 5 === 0
@@ -113,7 +111,7 @@ export function Hero({ heroImage, locale, dict }: HeroProps) {
                     y1={50 + r1 * Math.sin(angle)}
                     x2={50 + 48.5 * Math.cos(angle)}
                     y2={50 + 48.5 * Math.sin(angle)}
-                    stroke={long ? 'rgba(255,107,0,0.55)' : 'rgba(192,192,192,0.25)'}
+                    style={{ stroke: long ? 'rgba(255,107,0,0.55)' : 'rgb(var(--grid) / 0.25)' }}
                     strokeWidth={long ? 0.5 : 0.3}
                   />
                 )
@@ -137,7 +135,7 @@ export function Hero({ heroImage, locale, dict }: HeroProps) {
           <motion.div
             animate={reduce ? undefined : { y: [0, -10, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute -right-3 top-8 rounded-md border border-line-strong bg-[#141414]/90 px-4 py-3 shadow-card-hover backdrop-blur md:-right-8"
+            className="absolute right-2 top-4 rounded-md border border-line-strong bg-glass/90 px-3 py-2 shadow-card-hover backdrop-blur md:-right-8 md:top-8 md:px-4 md:py-3"
           >
             <p className="font-mono text-[10px] tracking-widest text-accent">{t.badge1.label}</p>
             <p className="mt-1 font-mono text-sm font-semibold text-metal-bright">{t.badge1.value}</p>
@@ -146,7 +144,7 @@ export function Hero({ heroImage, locale, dict }: HeroProps) {
           <motion.div
             animate={reduce ? undefined : { y: [0, 10, 0] }}
             transition={{ duration: 4.6, repeat: Infinity, ease: 'easeInOut', delay: 0.6 }}
-            className="absolute -left-3 bottom-10 rounded-md border border-line-strong bg-[#141414]/90 px-4 py-3 shadow-card-hover backdrop-blur md:-left-8"
+            className="absolute bottom-4 left-2 rounded-md border border-line-strong bg-glass/90 px-3 py-2 shadow-card-hover backdrop-blur md:-left-8 md:bottom-10 md:px-4 md:py-3"
           >
             <p className="font-mono text-[10px] tracking-widest text-metal-dim">{t.badge2.label}</p>
             <p className="mt-1 font-mono text-sm font-semibold text-metal-bright">{t.badge2.value}</p>

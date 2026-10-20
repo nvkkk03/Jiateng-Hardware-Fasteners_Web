@@ -24,7 +24,7 @@ export function Downloads({ dict }: { dict: Dict }) {
           onClick={handleDownload}
           className="group flex items-center gap-4 rounded-lg border border-line bg-card p-5 text-left transition-all duration-300 hover:border-line-strong hover:bg-card-hover"
         >
-          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-line-strong bg-white/[0.03] text-accent">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-line-strong bg-metal/[0.03] text-accent">
             <Download className="h-5 w-5" aria-hidden="true" />
           </span>
           <span>
@@ -38,7 +38,7 @@ export function Downloads({ dict }: { dict: Dict }) {
           onClick={handleDownload}
           className="group flex items-center gap-4 rounded-lg border border-line bg-card p-5 text-left transition-all duration-300 hover:border-line-strong hover:bg-card-hover"
         >
-          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-line-strong bg-white/[0.03] text-accent">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-line-strong bg-metal/[0.03] text-accent">
             <FileText className="h-5 w-5" aria-hidden="true" />
           </span>
           <span>
@@ -55,7 +55,7 @@ export function Downloads({ dict }: { dict: Dict }) {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 12 }}
-            className="fixed bottom-8 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2.5 rounded-md border border-accent/40 bg-[#181310] px-5 py-3.5 text-sm text-metal-bright shadow-card-hover"
+            className="fixed bottom-8 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2.5 rounded-md border border-accent/40 bg-toast px-5 py-3.5 text-sm text-metal-bright shadow-card-hover"
             role="status"
           >
             <Info className="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowUpRight, Anchor, CircleDot, Cog, Cylinder, Disc3, Hexagon } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Anchor, CircleDot, Cog, Cylinder, Disc3, Hexagon } from 'lucide-react'
 import { FadeIn } from '@/components/motion/fade-in'
 import { SectionHeader } from '@/components/layout/section-header'
 import { categories, getCategoryCount } from '@/lib/products'
@@ -55,18 +55,18 @@ export function CategoryGrid({ covers, locale, dict }: CategoryGridProps) {
                   {/* 封面小图 */}
                   {covers[cat.id] && <CategoryCover src={covers[cat.id]} />}
                   <div className="flex items-start justify-between">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-md border border-line-strong bg-white/[0.03] text-accent transition-colors duration-300 group-hover:border-accent/50 group-hover:bg-accent-dim">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-md border border-line-strong bg-metal/[0.03] text-accent transition-colors duration-300 group-hover:border-accent/50 group-hover:bg-accent-dim">
                       <Icon className="h-5 w-5" />
                     </span>
                     <ArrowUpRight
-                      className="h-4 w-4 text-metal-dim/50 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
+                      className="h-4 w-4 text-metal-dim transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
                       aria-hidden="true"
                     />
                   </div>
                   <h3 className="mt-5 text-lg font-semibold text-metal-bright transition-colors group-hover:text-accent">
                     {locale === 'en' ? cat.nameEn : cat.name}
                   </h3>
-                  <p className="mt-1 font-mono text-[10px] tracking-widest text-metal-dim/60">
+                  <p className="mt-1 font-mono text-[10px] tracking-widest text-metal-dim">
                     {cat.en} · {count} {t.modelsUnit.toUpperCase()}
                   </p>
                 </Link>
@@ -74,6 +74,15 @@ export function CategoryGrid({ covers, locale, dict }: CategoryGridProps) {
             )
           })}
         </div>
+
+        <FadeIn className="mt-10 text-center md:hidden">
+          <Link
+            href={`/${locale}/products`}
+            className="inline-flex items-center gap-1.5 font-mono text-xs tracking-widest text-accent"
+          >
+            {t.viewAllMobile} <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </FadeIn>
       </div>
     </section>
   )

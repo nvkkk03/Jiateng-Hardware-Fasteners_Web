@@ -150,13 +150,13 @@ export default function ProductDetailPage({ params }: DetailPageProps) {
               {t.homeCrumb}
             </Link>
           </li>
-          <ChevronRight className="h-3 w-3 shrink-0 text-metal-dim/40" aria-hidden="true" />
+          <ChevronRight className="h-3 w-3 shrink-0 text-metal-dim" aria-hidden="true" />
           <li>
             <Link href={`/${locale}/products`} className="transition-colors hover:text-metal-bright">
               {t.productsCrumb}
             </Link>
           </li>
-          <ChevronRight className="h-3 w-3 shrink-0 text-metal-dim/40" aria-hidden="true" />
+          <ChevronRight className="h-3 w-3 shrink-0 text-metal-dim" aria-hidden="true" />
           <li>
             <Link
               href={`/${locale}/products?series=${product.seriesId}`}
@@ -165,7 +165,7 @@ export default function ProductDetailPage({ params }: DetailPageProps) {
               {seriesName}
             </Link>
           </li>
-          <ChevronRight className="h-3 w-3 shrink-0 text-metal-dim/40" aria-hidden="true" />
+          <ChevronRight className="h-3 w-3 shrink-0 text-metal-dim" aria-hidden="true" />
           <li className="text-metal" aria-current="page">
             {name}
           </li>
@@ -187,7 +187,7 @@ export default function ProductDetailPage({ params }: DetailPageProps) {
               </div>
 
               <h1 className="mt-4 text-3xl font-semibold leading-snug text-metal-bright md:text-4xl">{name}</h1>
-              <p className="mt-3 font-mono text-xs tracking-widest text-metal-dim/70">
+              <p className="mt-3 font-mono text-xs tracking-widest text-metal-dim">
                 {t.skuLabel}: {product.id} · {series?.en}
               </p>
 
@@ -195,7 +195,7 @@ export default function ProductDetailPage({ params }: DetailPageProps) {
               <div className="mt-6 flex items-baseline gap-2 border-y border-line py-5">
                 <span className="text-sm text-metal-dim">{t.referencePrice}</span>
                 <span className="font-mono text-3xl font-bold text-accent">¥{product.price.toFixed(2)}</span>
-                <span className="text-xs text-metal-dim/70">{t.priceSuffix}</span>
+                <span className="text-xs text-metal-dim">{t.priceSuffix}</span>
               </div>
 
               {/* 关键参数速览 */}

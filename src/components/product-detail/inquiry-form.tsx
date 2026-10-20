@@ -114,7 +114,7 @@ export function InquiryForm({ productName, locale, dict }: InquiryFormProps) {
                   </>
                 )}
               </Button>
-              <p className="mt-3 text-xs text-metal-dim/60">{t.privacy}</p>
+              <p className="mt-3 text-xs text-metal-dim">{t.privacy}</p>
             </div>
           </motion.form>
         )}

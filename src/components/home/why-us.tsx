@@ -5,7 +5,7 @@ import type { Dict } from '@/lib/i18n'
 
 const ADVANTAGE_ICONS = [Layers, Ruler, ScanSearch, Truck]
 
-/** 为什么选择我们：四列核心优势（文案来自字典） */
+/** 为什么选择我们：hairline 分隔的清单式优势列表（文案来自字典） */
 export function WhyUs({ dict }: { dict: Dict }) {
   const t = dict.home.why
   return (
@@ -15,37 +15,32 @@ export function WhyUs({ dict }: { dict: Dict }) {
           <SectionHeader kicker={t.kicker} title={t.title} description={t.desc} />
         </FadeIn>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-12 border-b border-line">
           {t.items.map((adv, i) => {
             const Icon = ADVANTAGE_ICONS[i]
             return (
-              <FadeIn key={adv.en} delay={i * 0.08} className="h-full">
-                <div className="group relative h-full rounded-lg border border-line bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-card-hover">
-                  <div className="shine-sweep" aria-hidden="true" />
-                  {/* 序号 */}
-                  <span className="absolute right-5 top-4 font-mono text-xs text-metal-dim/40">
-                    0{i + 1}
+              <FadeIn key={adv.en} delay={i * 0.06}>
+                <li className="group grid items-start gap-x-5 gap-y-3 border-t border-line py-7 sm:grid-cols-[auto_1fr] sm:gap-x-8 md:grid-cols-[auto_260px_1fr] md:py-8">
+                  <span
+                    className="flex h-10 w-10 items-center justify-center rounded-md border border-line-strong bg-metal/[0.03] text-metal transition-colors duration-300 group-hover:border-accent/50 group-hover:text-accent"
+                    aria-hidden="true"
+                  >
+                    <Icon className="h-[18px] w-[18px]" />
                   </span>
-                  <span className="flex h-12 w-12 items-center justify-center rounded-md border border-line-strong bg-white/[0.03] text-accent">
-                    <Icon className="h-5 w-5" aria-hidden="true" />
-                  </span>
-                  <h3 className="mt-5 flex items-baseline gap-2 text-lg font-semibold text-metal-bright">
+                  <h3 className="flex flex-wrap items-baseline gap-x-3 pt-1 text-lg font-semibold text-metal-bright md:pt-0.5">
                     {adv.title}
-                    <span className="font-mono text-[10px] font-normal tracking-widest text-metal-dim/50">
+                    <span className="font-mono text-[11px] font-normal tracking-widest text-metal-dim">
                       {adv.en}
                     </span>
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-metal-dim">{adv.desc}</p>
-                  {/* 底部强调线 */}
-                  <span
-                    className="absolute inset-x-6 bottom-0 h-0.5 origin-left scale-x-0 bg-accent-line transition-transform duration-500 group-hover:scale-x-100"
-                    aria-hidden="true"
-                  />
-                </div>
+                  <p className="self-center text-sm leading-relaxed text-metal-dim md:pt-0.5">
+                    {adv.desc}
+                  </p>
+                </li>
               </FadeIn>
             )
           })}
-        </div>
+        </ul>
       </div>
     </section>
   )

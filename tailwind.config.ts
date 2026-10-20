@@ -1,9 +1,9 @@
 import type { Config } from 'tailwindcss'
 
 /**
- * 暗色工业风设计令牌
- * - 背景 #0A0A0A / 卡片 #1A1A1A
- * - 金属灰 #C0C0C0 / 强调色 #FF6B00
+ * 工业风设计令牌（明亮 / 暗夜双主题）
+ * - 颜色均通过 CSS 变量注入，globals.css 中 :root（明亮默认）与 .dark（暗夜）两套取值
+ * - 强调色 #FF6B00 两种主题通用
  * - 断点：360 / 768 / 1200 / 1600
  */
 const config: Config = {
@@ -11,22 +11,28 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: '#0A0A0A',
-        surface: '#111214',
-        card: '#1A1A1A',
-        'card-hover': '#212224',
+        background: 'rgb(var(--bg) / <alpha-value>)',
+        surface: 'rgb(var(--surface) / <alpha-value>)',
+        card: 'rgb(var(--card) / <alpha-value>)',
+        'card-hover': 'rgb(var(--card-hover) / <alpha-value>)',
         metal: {
-          DEFAULT: '#C0C0C0',
-          dim: '#8A8F98',
-          bright: '#EDEFF2',
+          DEFAULT: 'rgb(var(--metal) / <alpha-value>)',
+          dim: 'rgb(var(--metal-dim) / <alpha-value>)',
+          bright: 'rgb(var(--metal-bright) / <alpha-value>)',
         },
         accent: {
           DEFAULT: '#FF6B00',
           hover: '#FF8533',
-          dim: 'rgba(255, 107, 0, 0.12)',
+          dim: 'rgb(255 107 0 / 0.12)',
         },
-        line: 'rgba(192, 192, 192, 0.12)',
-        'line-strong': 'rgba(192, 192, 192, 0.24)',
+        // 固有透明度的分隔线，变量直接携带 rgba 值
+        line: 'var(--line)',
+        'line-strong': 'var(--line-strong)',
+        popover: 'rgb(var(--popover) / <alpha-value>)',
+        'popover-deep': 'rgb(var(--popover-deep) / <alpha-value>)',
+        glass: 'rgb(var(--glass) / <alpha-value>)',
+        deep: 'rgb(var(--deep) / <alpha-value>)',
+        toast: 'rgb(var(--toast) / <alpha-value>)',
       },
       fontFamily: {
         sans: [
@@ -61,17 +67,18 @@ const config: Config = {
         widest2: '0.25em',
       },
       boxShadow: {
-        card: '0 1px 0 0 rgba(192,192,192,0.06) inset, 0 12px 32px -12px rgba(0,0,0,0.6)',
-        'card-hover': '0 1px 0 0 rgba(192,192,192,0.1) inset, 0 24px 48px -16px rgba(0,0,0,0.7)',
+        card: '0 1px 0 0 rgb(var(--hi) / 0.06) inset, 0 12px 32px -12px rgb(var(--sh) / 0.6)',
+        'card-hover':
+          '0 1px 0 0 rgb(var(--hi) / 0.1) inset, 0 24px 48px -16px rgb(var(--sh) / 0.7)',
         'accent-glow': '0 0 24px -6px rgba(255,107,0,0.45)',
       },
       backgroundImage: {
         'grid-fine':
-          'linear-gradient(rgba(192,192,192,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(192,192,192,0.05) 1px, transparent 1px)',
+          'linear-gradient(rgb(var(--grid) / 0.05) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--grid) / 0.05) 1px, transparent 1px)',
         'grid-technical':
-          'linear-gradient(rgba(192,192,192,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(192,192,192,0.035) 1px, transparent 1px), linear-gradient(rgba(192,192,192,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(192,192,192,0.06) 1px, transparent 1px)',
+          'linear-gradient(rgb(var(--grid) / 0.035) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--grid) / 0.035) 1px, transparent 1px), linear-gradient(rgb(var(--grid) / 0.06) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--grid) / 0.06) 1px, transparent 1px)',
         'metal-sheen':
-          'linear-gradient(135deg, rgba(192,192,192,0.14) 0%, rgba(192,192,192,0.02) 40%, rgba(192,192,192,0) 60%)',
+          'linear-gradient(135deg, rgb(var(--hi) / 0.14) 0%, rgb(var(--hi) / 0.02) 40%, rgb(var(--hi) / 0) 60%)',
         'accent-line': 'linear-gradient(90deg, #FF6B00 0%, rgba(255,107,0,0) 100%)',
       },
       backgroundSize: {

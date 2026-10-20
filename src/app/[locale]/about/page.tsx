@@ -84,7 +84,7 @@ export default function AboutPage({ params }: AboutPageProps) {
             {t.milestones.map((m, i) => (
               <FadeIn key={m.year} delay={i * 0.06}>
                 <li className="group flex items-baseline gap-6 border-b border-line py-6 transition-colors hover:border-accent/40 md:gap-12">
-                  <span className="font-mono text-2xl font-bold text-metal-dim/50 transition-colors group-hover:text-accent md:text-3xl">
+                  <span className="font-mono text-2xl font-bold text-metal-dim transition-colors group-hover:text-accent md:text-3xl">
                     {m.year}
                   </span>
                   <span className="text-sm text-metal md:text-base">{m.text}</span>

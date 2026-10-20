@@ -50,7 +50,7 @@ export function ProductCard({ product, locale, dict, priority = false, className
       <div className="flex flex-1 flex-col gap-3 p-5">
         <div className="flex items-center justify-between gap-2">
           <Badge>{seriesName}</Badge>
-          <span className="font-mono text-[10px] text-metal-dim/60">{product.id}</span>
+          <span className="font-mono text-[10px] text-metal-dim">{product.id}</span>
         </div>
 
         <h3 className="text-[15px] font-medium leading-snug text-metal-bright transition-colors group-hover:text-accent">
@@ -74,11 +74,11 @@ export function ProductCard({ product, locale, dict, priority = false, className
 
         <div className="flex items-center justify-between">
           <p className="text-sm">
-            <span className="font-mono text-metal-dim/70">¥ </span>
+            <span className="font-mono text-metal-dim">¥ </span>
             <span className="font-mono text-base font-semibold text-metal-bright">
               {product.price.toFixed(2)}
             </span>
-            <span className="ml-1 text-xs text-metal-dim/70">{priceSuffix}</span>
+            <span className="ml-1 text-xs text-metal-dim">{priceSuffix}</span>
           </p>
           <span
             className="flex h-8 w-8 items-center justify-center rounded-full border border-line text-metal-dim transition-all duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-white"

@@ -19,7 +19,7 @@ export function StatsBand({ dict }: { dict: Dict }) {
                 <CountUp value={s.value} suffix={s.suffix} decimals={s.decimals ?? 0} />
               </p>
               <p className="mt-3 text-sm text-metal">{s.label}</p>
-              <p className="mt-1 font-mono text-[10px] tracking-widest text-metal-dim/50">{s.en}</p>
+              <p className="mt-1 font-mono text-[10px] tracking-widest text-metal-dim">{s.en}</p>
             </div>
           </FadeIn>
         ))}

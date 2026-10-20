@@ -83,7 +83,7 @@ export function FilterPanel({ draft, onChange, dict, locale }: FilterPanelProps)
           onValueChange={([min, max]) => onChange({ ...draft, price: [min, max] })}
           aria-label={t.price}
         />
-        <div className="mt-2 flex justify-between font-mono text-[10px] text-metal-dim/60">
+        <div className="mt-2 flex justify-between font-mono text-[10px] text-metal-dim">
           <span>¥0</span>
           <span>¥{OPTIONS.priceMax}+</span>
         </div>

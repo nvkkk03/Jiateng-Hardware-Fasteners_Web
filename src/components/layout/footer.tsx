@@ -15,7 +15,7 @@ export function Footer({ locale, dict }: FooterProps) {
   const year = new Date().getFullYear()
   const t = dict.footer
   return (
-    <footer className="relative border-t border-line bg-[#070707]" aria-label={t.aria}>
+    <footer className="relative border-t border-line bg-deep" aria-label={t.aria}>
       <div className="container-main py-14 md:py-20">
         <div className="grid gap-12 md:grid-cols-3 md:gap-8">
           {/* 联系方式 */}
@@ -39,7 +39,7 @@ export function Footer({ locale, dict }: FooterProps) {
                 <span>{t.address}</span>
               </li>
             </ul>
-            <p className="mt-5 font-mono text-xs text-metal-dim/60">{t.hours}</p>
+            <p className="mt-5 font-mono text-xs text-metal-dim">{t.hours}</p>
           </div>
 
           {/* 产品系列导航 */}
@@ -68,7 +68,7 @@ export function Footer({ locale, dict }: FooterProps) {
               {site.certifications.map((c) => (
                 <li
                   key={c}
-                  className="rounded border border-line-strong bg-white/[0.03] px-3.5 py-2 font-mono text-xs tracking-wider text-metal"
+                  className="rounded border border-line-strong bg-metal/[0.03] px-3.5 py-2 font-mono text-xs tracking-wider text-metal"
                 >
                   {c}
                 </li>
@@ -81,7 +81,7 @@ export function Footer({ locale, dict }: FooterProps) {
 
       {/* 底部版权条 */}
       <div className="border-t border-line">
-        <div className="container-main flex flex-col items-center justify-between gap-3 py-5 text-xs text-metal-dim/70 md:flex-row">
+        <div className="container-main flex flex-col items-center justify-between gap-3 py-5 text-xs text-metal-dim md:flex-row">
           <p>
             © {year} {t.company} {t.copyright}
           </p>
@@ -92,7 +92,7 @@ export function Footer({ locale, dict }: FooterProps) {
       {/* 背景水印 */}
       <div
         aria-hidden="true"
-        className="pointer-events-none select-none overflow-hidden text-center text-[18vw] font-bold leading-[0.75] tracking-tight text-white/[0.018]"
+        className="pointer-events-none select-none overflow-hidden text-center text-[18vw] font-bold leading-[0.75] tracking-tight text-metal/[0.02]"
       >
         JIATENG
       </div>

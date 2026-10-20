@@ -26,7 +26,7 @@ export default function Error({
       <p className="font-mono text-sm tracking-widest text-accent">{t.code}</p>
       <h1 className="mt-4 text-3xl font-semibold text-metal-bright md:text-4xl">{t.title}</h1>
       <p className="mt-4 max-w-md text-sm leading-relaxed text-metal-dim">{t.desc}</p>
-      <div className="mt-8 flex items-center gap-2 font-mono text-xs text-metal-dim/50">
+      <div className="mt-8 flex items-center gap-2 font-mono text-xs text-metal-dim">
         <AlertTriangle className="h-3.5 w-3.5" aria-hidden="true" />
         {error.digest ?? 'ERR_UNKNOWN'}
       </div>

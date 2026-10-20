@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronDown, Globe, Menu, Phone } from 'lucide-react'
 import { Logo } from '@/components/layout/logo'
+import { ThemeToggle } from '@/components/layout/theme-toggle'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { allSeries, categories, getCategoryCount } from '@/lib/products'
@@ -66,6 +67,13 @@ export function Navbar({ locale, dict }: NavbarProps) {
             className="relative"
             onMouseEnter={() => setDropdownOpen(true)}
             onMouseLeave={() => setDropdownOpen(false)}
+            onBlur={(e) => {
+              // 键盘导航离开下拉区域时收起
+              if (!e.currentTarget.contains(e.relatedTarget as Node)) setDropdownOpen(false)
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Escape') setDropdownOpen(false)
+            }}
           >
             <button
               type="button"
@@ -94,23 +102,23 @@ export function Navbar({ locale, dict }: NavbarProps) {
                   transition={{ duration: 0.22, ease: 'easeOut' }}
                   className="absolute left-1/2 top-full w-[880px] -translate-x-1/2 pt-3"
                 >
-                  <div className="overflow-hidden rounded-xl border border-line bg-[#121212]/98 shadow-card-hover backdrop-blur-xl">
-                    <div className="grid grid-cols-3 gap-px bg-line/60">
+                  <div className="overflow-hidden rounded-xl border border-line bg-popover/98 shadow-card-hover backdrop-blur-xl">
+                    <div className="grid grid-cols-3 gap-px bg-line">
                       {categories.map((cat) => (
                         <Link
                           key={cat.id}
                           href={`/${locale}/products?category=${cat.id}`}
-                          className="group bg-[#121212] p-5 transition-colors hover:bg-card-hover"
+                          className="group bg-popover p-5 transition-colors hover:bg-card-hover"
                         >
                           <div className="flex items-baseline justify-between">
                             <span className="font-medium text-metal-bright group-hover:text-accent">
                               {locale === 'en' ? cat.nameEn : cat.name}
                             </span>
-                            <span className="font-mono text-[10px] text-metal-dim/70">
+                            <span className="font-mono text-[10px] text-metal-dim">
                               {getCategoryCount(cat.id)} {dict.nav.modelsUnit}
                             </span>
                           </div>
-                          <p className="mt-1 font-mono text-[10px] tracking-widest text-metal-dim/60">{cat.en}</p>
+                          <p className="mt-1 font-mono text-[10px] tracking-widest text-metal-dim">{cat.en}</p>
                           <ul className="mt-3 space-y-1.5">
                             {allSeries
                               .filter((s) => s.category === cat.id)
@@ -128,8 +136,8 @@ export function Navbar({ locale, dict }: NavbarProps) {
                         </Link>
                       ))}
                     </div>
-                    <div className="flex items-center justify-between bg-[#0E0E0E] px-5 py-3">
-                      <span className="font-mono text-[10px] tracking-widest text-metal-dim/70">
+                    <div className="flex items-center justify-between bg-popover-deep px-5 py-3">
+                      <span className="font-mono text-[10px] tracking-widest text-metal-dim">
                         {dict.nav.allStandards}
                       </span>
                       <Link
@@ -162,8 +170,9 @@ export function Navbar({ locale, dict }: NavbarProps) {
           ))}
         </div>
 
-        {/* 右侧：语言切换 + 电话 + 询价 CTA + 移动端汉堡 */}
+        {/* 右侧：主题切换 + 语言切换 + 电话 + 询价 CTA + 移动端汉堡 */}
         <div className="flex items-center gap-3">
+          <ThemeToggle label={dict.nav.themeToggle} />
           <Link
             href={switchHref}
             aria-label={dict.nav.langSwitchLabel}
@@ -193,13 +202,16 @@ export function Navbar({ locale, dict }: NavbarProps) {
               <SheetTitle className="sr-only">{dict.nav.navAria}</SheetTitle>
               <div className="mb-8 flex items-center justify-between">
                 <Logo locale={locale} dict={dict} />
-                <Link
-                  href={switchHref}
-                  className="flex items-center gap-1.5 rounded-md border border-line px-2.5 py-1.5 font-mono text-xs text-metal-dim"
-                >
-                  <Globe className="h-3.5 w-3.5" aria-hidden="true" />
-                  {dict.nav.langSwitchTo}
-                </Link>
+                <div className="flex items-center gap-2">
+                  <ThemeToggle label={dict.nav.themeToggle} />
+                  <Link
+                    href={switchHref}
+                    className="flex items-center gap-1.5 rounded-md border border-line px-2.5 py-1.5 font-mono text-xs text-metal-dim"
+                  >
+                    <Globe className="h-3.5 w-3.5" aria-hidden="true" />
+                    {dict.nav.langSwitchTo}
+                  </Link>
+                </div>
               </div>
               <nav className="flex flex-col gap-1" aria-label={dict.nav.mobileNavAria}>
                 <MobileGroup locale={locale} dict={dict} onNavigate={() => setMobileOpen(false)} />
@@ -241,7 +253,7 @@ function MobileGroup({
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        className="flex h-12 items-center justify-between rounded-md px-3 text-[15px] text-metal-bright hover:bg-white/5"
+        className="flex h-12 items-center justify-between rounded-md px-3 text-[15px] text-metal-bright hover:bg-metal/5"
       >
         {dict.nav.products}
         <ChevronDown className={cn('h-4 w-4 transition-transform', open && 'rotate-180')} />
@@ -260,10 +272,10 @@ function MobileGroup({
                 <Link
                   href={`/${locale}/products?series=${s.id}`}
                   onClick={onNavigate}
-                  className="flex h-10 items-center justify-between rounded-md pl-6 pr-3 text-sm text-metal-dim hover:bg-white/5 hover:text-metal-bright"
+                  className="flex h-10 items-center justify-between rounded-md pl-6 pr-3 text-sm text-metal-dim hover:bg-metal/5 hover:text-metal-bright"
                 >
                   {locale === 'en' ? s.nameEn : s.name}
-                  <span className="font-mono text-[10px] text-metal-dim/60">{s.count}</span>
+                  <span className="font-mono text-[10px] text-metal-dim">{s.count}</span>
                 </Link>
               </li>
             ))}
@@ -273,14 +285,14 @@ function MobileGroup({
       <Link
         href={`/${locale}/about`}
         onClick={onNavigate}
-        className="flex h-12 items-center rounded-md px-3 text-[15px] text-metal-bright hover:bg-white/5"
+        className="flex h-12 items-center rounded-md px-3 text-[15px] text-metal-bright hover:bg-metal/5"
       >
         {dict.nav.about}
       </Link>
       <Link
         href={`/${locale}/contact`}
         onClick={onNavigate}
-        className="flex h-12 items-center rounded-md px-3 text-[15px] text-metal-bright hover:bg-white/5"
+        className="flex h-12 items-center rounded-md px-3 text-[15px] text-metal-bright hover:bg-metal/5"
       >
         {dict.nav.contact}
       </Link>

@@ -4,8 +4,66 @@
 
 /* ---------------------------------- 基础层 ---------------------------------- */
 @layer base {
+  /* 明亮主题（默认）：暖白底 + 深灰金属字 + 橙色强调 */
   :root {
+    color-scheme: light;
+
+    --bg: 250 250 248; /* #FAFAF8 页面背景 */
+    --surface: 245 244 241; /* #F5F4F1 次级面板 */
+    --card: 255 255 255; /* #FFFFFF 卡片 */
+    --card-hover: 247 246 243; /* #F7F6F3 卡片悬停 */
+
+    --metal: 71 75 82; /* #474B52 正文 */
+    --metal-dim: 113 118 126; /* #71767E 弱化文本 */
+    --metal-bright: 24 26 30; /* #181A1E 标题近黑 */
+
+    --line: rgba(24, 26, 30, 0.13);
+    --line-strong: rgba(24, 26, 30, 0.26);
+
+    --popover: 255 255 255; /* 导航下拉面板 */
+    --popover-deep: 245 244 241; /* 下拉面板底部条 */
+    --glass: 255 255 255; /* 悬浮玻璃层（徽章/抽屉） */
+    --deep: 242 241 237; /* 页脚更深背景 */
+    --toast: 255 245 236; /* 下载提示条（暖橙白） */
+
+    --grid: 24 26 30; /* 网格背景线条色 */
+    --hi: 255 255 255; /* 内高光 / 金属光泽 */
+    --sh: 30 34 42; /* 投影色 */
+
+    --scrollbar-track: #f5f4f1;
+    --scrollbar-thumb: #d9d8d3;
+    --scrollbar-thumb-hover: #c5c4bf;
+  }
+
+  /* 暗夜主题（原默认样式） */
+  .dark {
     color-scheme: dark;
+
+    --bg: 10 10 10; /* #0A0A0A */
+    --surface: 17 18 20; /* #111214 */
+    --card: 26 26 26; /* #1A1A1A */
+    --card-hover: 33 34 36; /* #212224 */
+
+    --metal: 192 192 192; /* #C0C0C0 */
+    --metal-dim: 138 143 152; /* #8A8F98 */
+    --metal-bright: 237 239 242; /* #EDEFF2 */
+
+    --line: rgba(192, 192, 192, 0.12);
+    --line-strong: rgba(192, 192, 192, 0.24);
+
+    --popover: 18 18 18; /* #121212 */
+    --popover-deep: 14 14 14; /* #0E0E0E */
+    --glass: 20 20 20; /* #141414 */
+    --deep: 7 7 7; /* #070707 */
+    --toast: 24 19 16; /* #181310 */
+
+    --grid: 192 192 192;
+    --hi: 192 192 192;
+    --sh: 0 0 0;
+
+    --scrollbar-track: #0a0a0a;
+    --scrollbar-thumb: #2a2a2a;
+    --scrollbar-thumb-hover: #3a3a3a;
   }
 
   * {
@@ -18,7 +76,7 @@
   }
 
   body {
-    @apply bg-background text-metal antialiased;
+    @apply bg-background text-metal antialiased transition-colors duration-300;
     text-rendering: optimizeLegibility;
     /* 防止入场动画位移造成的横向溢出（clip 不会破坏 sticky） */
     overflow-x: clip;
@@ -33,15 +91,15 @@
     height: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #0a0a0a;
+    background: var(--scrollbar-track);
   }
   ::-webkit-scrollbar-thumb {
-    background: #2a2a2a;
+    background: var(--scrollbar-thumb);
     border-radius: 8px;
-    border: 2px solid #0a0a0a;
+    border: 2px solid var(--scrollbar-track);
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #3a3a3a;
+    background: var(--scrollbar-thumb-hover);
   }
 
   /* 键盘可达性：统一的聚焦环 */
@@ -110,9 +168,9 @@
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(192, 192, 192, 0.12) 45%,
-      rgba(237, 239, 242, 0.22) 50%,
-      rgba(192, 192, 192, 0.12) 55%,
+      rgb(var(--metal) / 0.08) 45%,
+      rgb(var(--metal) / 0.16) 50%,
+      rgb(var(--metal) / 0.08) 55%,
       transparent
     );
   }

@@ -12,9 +12,9 @@ const buttonVariants = cva(
           'bg-accent text-white shadow-accent-glow hover:bg-accent-hover active:scale-[0.98]',
         outline:
           'border border-line-strong bg-transparent text-metal-bright hover:border-accent hover:text-accent',
-        ghost: 'text-metal-dim hover:bg-white/5 hover:text-metal-bright',
+        ghost: 'text-metal-dim hover:bg-metal/5 hover:text-metal-bright',
         metal:
-          'border border-line-strong bg-gradient-to-b from-white/10 to-white/[0.03] text-metal-bright hover:from-white/15 hover:border-line-strong',
+          'border border-line-strong bg-gradient-to-b from-metal/10 to-metal/[0.03] text-metal-bright hover:from-metal/15 hover:border-line-strong',
         link: 'text-accent underline-offset-4 hover:underline',
       },
       size: {

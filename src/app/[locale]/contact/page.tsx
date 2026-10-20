@@ -63,11 +63,11 @@ export default function ContactPage({ params }: ContactPageProps) {
                 const Icon = CHANNEL_ICONS[ch.icon]
                 const inner = (
                   <div className="group flex items-start gap-4 rounded-lg border border-line bg-card p-5 transition-all duration-300 hover:border-line-strong hover:bg-card-hover">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-line-strong bg-white/[0.03] text-accent">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-line-strong bg-metal/[0.03] text-accent">
                       <Icon className="h-5 w-5" aria-hidden="true" />
                     </span>
                     <div className="min-w-0">
-                      <p className="font-mono text-[10px] tracking-widest text-metal-dim/60">{ch.label}</p>
+                      <p className="font-mono text-[10px] tracking-widest text-metal-dim">{ch.label}</p>
                       <p className="mt-1 break-all font-medium text-metal-bright">{ch.value}</p>
                       <p className="mt-1 text-xs text-metal-dim">{ch.sub}</p>
                     </div>

@@ -63,7 +63,7 @@ export function ProductGallery({ product, gallery, locale, dict }: ProductGaller
             className="object-contain p-10"
           />
           {/* 提示标签 */}
-          <span className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-[#141414]/85 px-3 py-1 font-mono text-[10px] tracking-widest text-metal-dim backdrop-blur">
+          <span className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-glass/85 px-3 py-1 font-mono text-[10px] tracking-widest text-metal-dim backdrop-blur">
             <RotateCw className="h-3 w-3" aria-hidden="true" />
             {dict.detail.galleryHint}
           </span>

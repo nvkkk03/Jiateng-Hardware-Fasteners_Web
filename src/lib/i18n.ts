@@ -32,6 +32,7 @@ export interface Dict {
     viewAll: string
     langSwitchLabel: string
     langSwitchTo: string
+    themeToggle: string
   }
   footer: {
     aria: string
@@ -58,7 +59,15 @@ export interface Dict {
       badge2: { label: string; value: string }
       heroAlt: string
     }
-    categories: { aria: string; kicker: string; title: string; desc: string; viewAll: string; modelsUnit: string }
+    categories: {
+      aria: string
+      kicker: string
+      title: string
+      desc: string
+      viewAll: string
+      viewAllMobile: string
+      modelsUnit: string
+    }
     statsAria: string
     featured: { kicker: string; title: string; desc: string; viewAll: string; viewAllMobile: string }
     stats: { value: number; suffix: string; decimals?: number; label: string; en: string }[]
@@ -200,6 +209,7 @@ export const dictionaries: Record<Locale, Dict> = {
       viewAll: '查看全部产品 →',
       langSwitchLabel: '切换到英文',
       langSwitchTo: 'EN',
+      themeToggle: '切换明暗主题',
     },
     footer: {
       aria: '页脚',
@@ -232,6 +242,7 @@ export const dictionaries: Record<Locale, Dict> = {
         title: '六大品类 · 全场景覆盖',
         desc: '从微型电子螺丝到大载荷锚栓，13 个系列 197 种型号，按品类快速定位您需要的紧固方案。',
         viewAll: 'ALL PRODUCTS →',
+        viewAllMobile: '查看全部品类',
         modelsUnit: '型号',
       },
       statsAria: '公司数据',
@@ -430,6 +441,7 @@ export const dictionaries: Record<Locale, Dict> = {
       viewAll: 'View all products →',
       langSwitchLabel: 'Switch to Chinese',
       langSwitchTo: '中文',
+      themeToggle: 'Toggle light / dark theme',
     },
     footer: {
       aria: 'Footer',
@@ -463,6 +475,7 @@ export const dictionaries: Record<Locale, Dict> = {
         title: 'Six Categories · Every Application',
         desc: 'From micro electronics screws to heavy-duty anchors — 13 series, 197 models. Find the right fastening solution by category.',
         viewAll: 'ALL PRODUCTS →',
+        viewAllMobile: 'View all categories',
         modelsUnit: 'models',
       },
       statsAria: 'Company stats',

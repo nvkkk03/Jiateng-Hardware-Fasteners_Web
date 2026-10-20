@@ -44,7 +44,7 @@ export function CheckboxGroup({ title, options, selected, onToggle }: CheckboxGr
               />
               <span className={checked ? 'text-metal-bright' : ''}>{opt.label}</span>
               {typeof opt.count === 'number' && (
-                <span className="ml-auto font-mono text-[10px] text-metal-dim/50">{opt.count}</span>
+                <span className="ml-auto font-mono text-[10px] text-metal-dim">{opt.count}</span>
               )}
             </label>
           )

@@ -146,7 +146,7 @@ export function ProductsBrowser({ locale, dict }: ProductsBrowserProps) {
                       'px-3 py-2 font-mono text-xs transition-colors',
                       sort === s.key
                         ? 'bg-accent text-white'
-                        : 'bg-transparent text-metal-dim hover:bg-white/5 hover:text-metal-bright',
+                        : 'bg-transparent text-metal-dim hover:bg-metal/5 hover:text-metal-bright',
                     )}
                   >
                     {s.label}
@@ -168,7 +168,7 @@ export function ProductsBrowser({ locale, dict }: ProductsBrowserProps) {
             <div className="flex flex-col items-center justify-center rounded-lg border border-dashed border-line-strong py-24 text-center">
               <p className="font-mono text-4xl text-metal-dim/30">[ 0 ]</p>
               <p className="mt-4 text-sm text-metal-dim">{t.emptyTitle}</p>
-              <p className="mt-1 text-xs text-metal-dim/60">{t.emptyDesc}</p>
+              <p className="mt-1 text-xs text-metal-dim">{t.emptyDesc}</p>
               <Button
                 variant="outline"
                 size="sm"
