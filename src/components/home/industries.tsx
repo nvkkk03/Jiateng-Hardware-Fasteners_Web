@@ -12,7 +12,7 @@ const ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
   Wind,
 }
 
-/** 应用行业区（文案来自字典） */
+/** 应用行业区：紧凑两列清单（与产品卡片形成版式对比） */
 export function Industries({ dict }: { dict: Dict }) {
   const t = dict.home.industries
   return (
@@ -22,24 +22,25 @@ export function Industries({ dict }: { dict: Dict }) {
           <SectionHeader kicker={t.kicker} title={t.title} description={t.desc} />
         </FadeIn>
 
-        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-12 grid gap-x-14 sm:grid-cols-2">
           {t.items.map((ind, i) => {
             const Icon = ICONS[ind.icon]
             return (
-              <FadeIn key={ind.name} delay={(i % 3) * 0.08}>
-                <div className="group relative flex items-start gap-5 rounded-lg border border-line bg-card p-6 transition-all duration-300 hover:border-line-strong hover:bg-card-hover">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-line-strong bg-white/[0.03] text-metal transition-colors duration-300 group-hover:border-accent/50 group-hover:text-accent">
-                    <Icon className="h-5 w-5" />
-                  </span>
+              <FadeIn key={ind.name} delay={(i % 2) * 0.06}>
+                <li className="group flex items-start gap-4 border-t border-line py-5">
+                  <Icon
+                    className="mt-0.5 h-4 w-4 shrink-0 text-metal-dim transition-colors duration-300 group-hover:text-accent"
+                    aria-hidden="true"
+                  />
                   <div>
-                    <h3 className="font-medium text-metal-bright">{ind.name}</h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-metal-dim">{ind.desc}</p>
+                    <h3 className="text-[15px] font-medium text-metal-bright">{ind.name}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-metal-dim">{ind.desc}</p>
                   </div>
-                </div>
+                </li>
               </FadeIn>
             )
           })}
-        </div>
+        </ul>
       </div>
     </section>
   )
