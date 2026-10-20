@@ -8,6 +8,8 @@ import type { Config } from 'tailwindcss'
  */
 const config: Config = {
   content: ['./src/**/*.{ts,tsx}'],
+  // dark: 变体跟随 <html class="dark">，与主题切换机制一致（默认 media 只看系统偏好）
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
